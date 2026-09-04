@@ -1,69 +1,111 @@
-import Image from "next/image";
+'use client';
+import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 export default function Home() {
+  const bestSellers = [
+    {
+      id: 'craftdean-wing',
+      name: 'Clarks Craftdean Wing Brogue',
+      category: 'Pre-Owned Leather',
+      price: 6500,
+      image: 'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=800&auto=format&fit=crop'
+    },
+    {
+      id: 'desert-boot-suede',
+      name: 'Clarks Desert Boot Suede',
+      category: 'Suede Collection',
+      price: 5800,
+      image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop'
+    },
+    {
+      id: 'wallabee-suede',
+      name: 'Clarks Wallabee Suede',
+      category: 'Suede Collection',
+      price: 7200,
+      image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=800&auto=format&fit=crop'
+    }
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-white">
+      
+      {/* Hero Section with Transparent Navbar Overlay */}
+      <section className="relative h-[85vh] w-full bg-neutral-900 overflow-hidden">
+        <Navbar transparent={true} />
+
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=1600&auto=format&fit=crop" 
+            alt="Authentic Secondhand Clarks" 
+            className="w-full h-full object-cover object-center opacity-55 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/80 via-neutral-950/40 to-transparent" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-10 pt-20">
+          <div className="max-w-xl space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold">
+              Authentic Pre-Owned Clarks & Suede
+            </span>
+            <h1 className="text-5xl md:text-6xl font-light tracking-tight text-white leading-[1.1]">
+              Timeless Clarks.<br />
+              <span className="font-semibold text-white">Inspected & Cleaned.</span>
+            </h1>
+            <p className="text-neutral-300 text-sm md:text-base font-light tracking-wide leading-relaxed">
+              Discover verified second-hand leather and rich color suede collections. Premium footwear quality at a fraction of the cost.
+            </p>
+            <div className="pt-2">
+              <Link 
+                href="/products/craftdean-wing" 
+                className="inline-block bg-white text-neutral-950 px-8 py-3.5 rounded-full font-medium text-sm tracking-wide hover:bg-neutral-200 transition-all shadow-lg"
+              >
+                Shop Collection
+              </Link>
+            </div>
+          </div>
         </div>
-      </main>
+
+        <div className="absolute bottom-8 right-10 z-20 flex items-center space-x-3 text-white text-xs font-medium">
+          <span className="w-6 h-6 rounded-full border border-white flex items-center justify-center bg-white/20">1</span>
+          <span className="w-6 h-6 rounded-full flex items-center justify-center text-neutral-400 hover:text-white cursor-pointer">2</span>
+          <span className="w-6 h-6 rounded-full flex items-center justify-center text-neutral-400 hover:text-white cursor-pointer">3</span>
+        </div>
+      </section>
+
+      {/* Best Sellers Section */}
+      <section className="max-w-7xl mx-auto px-10 py-20 bg-white">
+        <div className="flex justify-between items-end mb-10">
+          <div>
+            <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold">Curated Arrivals</span>
+            <h2 className="text-2xl md:text-3xl font-medium tracking-tight text-neutral-900 mt-1">Featured Inventory</h2>
+          </div>
+          <Link href="/products" className="text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 underline underline-offset-4 transition-colors">
+            View All
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {bestSellers.map((shoe) => (
+            <Link key={shoe.id} href={`/products/${shoe.id}`} className="group space-y-3">
+              <div className="aspect-square bg-neutral-100 rounded-2xl overflow-hidden relative border border-neutral-200">
+                <img 
+                  src={shoe.image} 
+                  alt={shoe.name} 
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="space-y-1 pt-1">
+                <span className="text-[11px] uppercase tracking-wider text-neutral-500 font-medium">{shoe.category}</span>
+                <h3 className="text-sm font-semibold text-neutral-950">{shoe.name}</h3>
+                <p className="text-sm font-medium text-neutral-700">Ksh {shoe.price.toLocaleString()}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }
